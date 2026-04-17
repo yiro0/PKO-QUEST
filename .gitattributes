@@ -1,0 +1,8 @@
+# LF in the repo for all text files
+* text=auto eol=lf
+
+# for those files
+*.png binary
+*.jpg binary
+*.ico binary
+*.woff2 binary
