@@ -1,6 +1,7 @@
 import { useGameStore } from './engine/gameStore';
 import WelcomeScreen from './screens/WelcomeScreen';
 import GameScreen from './screens/GameScreen';
+import ResultScreen from './screens/ResultScreen';
 import { AnimatePresence, motion } from 'framer-motion';
 
 function App() {
@@ -33,6 +34,17 @@ function App() {
         </motion.div>
       )}
 
+      {currentStage === 'result' && (
+        <motion.div
+          key="result"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.4 }}
+        >
+          <ResultScreen />
+        </motion.div>
+      )}
     </AnimatePresence>
   );
 }

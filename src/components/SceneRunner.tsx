@@ -2,28 +2,23 @@ import { useGameStore } from '../engine/gameStore';
 import { SCENES } from '../data/scenes';
 
 export default function SceneRunner() {
-  // Wyciągamy z silnika potrzebne dane i funkcje
-  const { currentSceneId, advanceScene, addScore, currentStage } = useGameStore();
+  // 1. DODANE: Wyciągamy funkcję finishGame z silnika
+  const { currentSceneId, advanceScene, addScore, finishGame } = useGameStore();
 
-  // Szukamy w bazie sceny o aktualnym ID
   const scene = SCENES.find((s) => s.id === currentSceneId);
 
-  // Zabezpieczenie, gdyby scena nie istniała
   if (!scene) return <div className="text-red-500">Błąd: Brak sceny {currentSceneId}</div>;
 
-  // Funkcja odpalana po kliknięciu w odpowiedź
   const handleChoice = (scoreCategory?: string, scoreValue?: number) => {
-    // 1. Zapisz punkty (jeśli odpowiedź je posiada)
     if (scoreCategory && scoreValue) {
       addScore(scoreCategory, scoreValue);
     }
     
-    // 2. Przejdź dalej (na razie idziemy po prostu +1)
     if (currentSceneId < SCENES.length) {
       advanceScene(currentSceneId + 1);
     } else {
-      // Jeśli to była ostatnia scena, kończymy grę!
-      useGameStore.setState({ currentStage: 'result' });
+      // 2. ZMIENIONE: Zamiast po prostu przełączać ekran, odpalamy obliczanie!
+      finishGame(); 
     }
   };
 
@@ -33,7 +28,6 @@ export default function SceneRunner() {
         {scene.title}
       </h2>
       
-      {/* Jeśli scena ma wypowiedź postaci (characterLine), pokazujemy ją */}
       {scene.characterLine && (
         <div className="bg-slate-700/50 p-4 rounded-lg border-l-4 border-blue-500 mb-6 italic text-slate-200">
           "{scene.characterLine}"
@@ -44,7 +38,6 @@ export default function SceneRunner() {
         {scene.description}
       </p>
 
-      {/* Rysujemy przyciski odpowiedzi LUB przycisk "Dalej" (dla scenek kinowych) */}
       <div className="flex flex-col gap-3 mt-auto">
         {scene.answers ? (
           scene.answers.map((answer) => (

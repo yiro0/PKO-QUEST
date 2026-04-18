@@ -1,30 +1,37 @@
 import { create } from 'zustand';
+import type { Account } from '../types/account';
+import { calculateResult } from './scoring';
 
 interface GameState {
   currentStage: 'welcome' | 'playing' | 'result';
-  currentSceneId: number; // actual stage number
-  scores: Record<string, number>; // place for points { age: 10, work_type: 1 }
+  currentSceneId: number;
+  scores: Record<string, number>;
+  matchedAccount: Account | null; // Tu zapiszemy wynik końcowy
   
   startGame: () => void;
   advanceScene: (nextId: number) => void;
   addScore: (category: string, value: number) => void;
+  finishGame: () => void; // Nowa akcja kończąca grę
 }
 
-export const useGameStore = create<GameState>((set) => ({
+export const useGameStore = create<GameState>((set, get) => ({
   currentStage: 'welcome',
-  currentSceneId: 1, // starting stage
+  currentSceneId: 1,
   scores: {},
+  matchedAccount: null,
   
-  // afetr game start, scene and points have to be reset
-  startGame: () => set({ currentStage: 'playing', currentSceneId: 1, scores: {} }),
+  startGame: () => set({ currentStage: 'playing', currentSceneId: 1, scores: {}, matchedAccount: null }),
   
-
-  // transition to next scene
   advanceScene: (nextId) => set({ currentSceneId: nextId }),
   
-  // adding points to category
   addScore: (category, value) => 
     set((state) => ({
       scores: { ...state.scores, [category]: (state.scores[category] || 0) + value }
     })),
+
+  finishGame: () => {
+    const finalScores = get().scores;
+    const result = calculateResult(finalScores); // Wywołujemy algorytm
+    set({ matchedAccount: result, currentStage: 'result' });
+  }
 }));
