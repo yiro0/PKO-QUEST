@@ -1,67 +1,69 @@
+// src/data/scenes.ts
 import type { Scene } from '../types/scene';
 
 export const SCENES: Scene[] = [
   {
     id: 1,
     type: 'cinematic',
-    title: 'Inicjalizacja',
-    description: 'System załadowany. Nawiązywanie bezpiecznego połączenia z operatorem...',
-    backgroundUrl: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?q=80&w=2000&auto=format&fit=crop'
+    title: 'Wjazd do Doliny',
+    description: 'Wysiadasz z dyliżansu. Wszędzie dookoła widać kowali, farmerów, poszukiwaczy przygód i kupców z odległych krain.',
+    // Zewnętrzny placeholder tła (Wioska/Krajobraz)
+    backgroundUrl: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2000&auto=format&fit=crop',
+    // Zewnętrzny placeholder postaci
+    characterImage: 'https://api.dicebear.com/7.x/pixel-art/svg?seed=Przewodnik&backgroundColor=transparent'
   },
   {
     id: 2,
     type: 'question',
-    title: 'Weryfikacja stażu operacyjnego',
-    characterLine: 'Rozpoczynamy skanowanie profilu. Podaj swój status czasowy w strukturach (wiek), aby dostosować poziom dostępu.',
-    description: 'Wybierz swój przedział wiekowy:',
-    backgroundUrl: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2000&auto=format&fit=crop',
+    title: 'Spotkanie z Barnabą',
+    characterName: 'Barnaba',
+    characterImage: 'https://api.dicebear.com/7.x/pixel-art/svg?seed=Barnaba&backgroundColor=transparent',
+    characterLine: 'Ho, ho! Nowa twarz w Dolinie Złotego Dębu! Witaj, wędrowcze. Opowiedz mi o sobie, a dobiorę Dziennik idealny dla Twojej duszy. Ile zim już przeżyłeś na tym świecie?',
+    description: 'Barnaba zaprasza Cię do ogniska i spogląda wyczekująco.',
+    backgroundUrl: 'https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=2000&auto=format&fit=crop',
     answers: [
-      { id: 'age_1', text: '[A] Jestem rekrutem (poniżej 13 lat)', scoreCategory: 'age', scoreValue: 10 },
-      { id: 'age_2', text: '[B] Kadet wdrożeniowy (13 - 26 lat)', scoreCategory: 'age', scoreValue: 20 },
-      { id: 'age_3', text: '[C] Pełnoprawny operator (powyżej 26 lat)', scoreCategory: 'age', scoreValue: 30 },
+      { id: 'age_1', text: 'Niedawno nauczyłem się czytać! (Poniżej 13 lat)', scoreCategory: 'age', scoreValue: 10 },
+      { id: 'age_2', text: 'Gotów na własne przygody! (13 - 26 lat)', scoreCategory: 'age', scoreValue: 20 },
+      { id: 'age_3', text: 'Mam na karku trochę doświadczenia (Powyżej 26 lat)', scoreCategory: 'age', scoreValue: 30 },
     ]
   },
   {
     id: 3,
     type: 'question',
-    title: 'Charakterystyka misji',
-    characterLine: 'Potwierdzono status. Określ swój tryb działania na rynku kontraktów.',
-    description: 'Wybierz formę działalności:',
+    title: 'Plany na przyszłość',
+    characterName: 'Barnaba',
+    characterImage: 'https://api.dicebear.com/7.x/pixel-art/svg?seed=Barnaba&backgroundColor=transparent',
+    characterLine: 'Z czego zamierzasz się tu utrzymywać? Każdy ma swój fach. Jakie łupy będziesz znosić do Skarbca każdego księżyca?',
+    description: 'Określ swoją profesję w Dolinie:',
+    backgroundUrl: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=2000&auto=format&fit=crop',
     answers: [
-      { id: 'work_1', text: '[A] Niezależna jednostka bojowa (JDG)', scoreCategory: 'work_type', scoreValue: 1 },
-      { id: 'work_2', text: '[B] Dowodzę sztabem (Spółka/Korporacja)', scoreCategory: 'work_type', scoreValue: 2 },
-      { id: 'work_3', text: '[C] Misje pro publico bono (NGO / Fundacja)', scoreCategory: 'work_type', scoreValue: 3 },
-      { id: 'work_4', text: '[D] Cywil / Kontrakt standardowy (Etat)', scoreCategory: 'work_type', scoreValue: 4 },
+      { id: 'work_1', text: 'Kupiłem stary warsztat. Zakładam własny biznes! (JDG)', scoreCategory: 'work_type', scoreValue: 1 },
+      { id: 'work_2', text: 'Zwykłe zlecenia z tablicy. Standardowe łupy (Do 9 000 zł)', scoreCategory: 'income', scoreValue: 100 },
+      { id: 'work_3', text: 'Prowadzę elitarne misje (9 000 - 20 000 zł)', scoreCategory: 'income', scoreValue: 200 },
+      { id: 'work_4', text: 'Jestem legendą. Władam skarbami (Powyżej 20 000 zł)', scoreCategory: 'income', scoreValue: 300 },
     ]
   },
   {
     id: 4,
     type: 'question',
-    title: 'Poziom zasilania bazy',
-    characterLine: 'Analiza przepływów logistycznych. Jakie są szacowane, miesięczne zasilenia Twojego centrum dowodzenia?',
-    description: 'Wybierz przedział zarobków:',
+    title: 'Styl Przemierzania Świata',
+    characterName: 'Barnaba',
+    characterImage: 'https://api.dicebear.com/7.x/pixel-art/svg?seed=Barnaba&backgroundColor=transparent',
+    characterLine: 'Została nam ostatnia kwestia, wędrowcze. Jak wygląda Twój styl życia? Zapuszczasz korzenie, czy ciągnie Cię w nieznane?',
+    description: 'Barnaba zamyka księgę i uśmiecha się pod nosem.',
+    backgroundUrl: 'https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=2000&auto=format&fit=crop',
     answers: [
-      { id: 'income_1', text: '[A] Standardowy przydział (poniżej 9 000 PLN/msc)', scoreCategory: 'income', scoreValue: 100 },
-      { id: 'income_2', text: '[B] Wysoki priorytet (9 000 - 20 000 PLN/msc)', scoreCategory: 'income', scoreValue: 200 },
-      { id: 'income_3', text: '[C] Status VIP (powyżej 20 000 PLN/msc)', scoreCategory: 'income', scoreValue: 300 },
+      { id: 'pref_1', text: 'Zostaję w Dolinie. Będę codziennie odwiedzał karczmę (Aktywnie, lokalnie)', scoreCategory: 'preference', scoreValue: 1 },
+      { id: 'pref_2', text: 'Nie usiedzę w miejscu. Będę skakać przez portale (Częste podróże)', scoreCategory: 'preference', scoreValue: 2 }
     ]
   },
   {
     id: 5,
-    type: 'question',
-    title: 'Moduły dodatkowe',
-    characterLine: 'Ostatni krok. Zbliżamy się do zakończenia profilowania. Wskaż swoje priorytety logistyczne.',
-    description: 'Co jest dla Ciebie najważniejsze w zarządzaniu bazą?',
-    answers: [
-      { id: 'pref_1', text: '[A] Brak kosztów utrzymania bazy (Darmowe konto za aktywność)', scoreCategory: 'preference', scoreValue: 1 },
-      { id: 'pref_2', text: '[B] Misje globalne (Darmowe bankomaty i brak prowizji zagranicznych)', scoreCategory: 'preference', scoreValue: 2 },
-      { id: 'pref_3', text: '[C] Protokoły rezerwowe (Systematyczne oszczędzanie)', scoreCategory: 'preference', scoreValue: 3 },
-    ]
-  },
-  {
-    id: 6,
     type: 'cinematic',
-    title: 'Analiza Danych',
-    description: 'Przetwarzanie wprowadzonych parametrów. Dopasowywanie najlepszego sprzętu operacyjnego...',
+    title: 'Analiza Przeznaczenia',
+    characterName: 'Barnaba',
+    characterImage: 'https://api.dicebear.com/7.x/pixel-art/svg?seed=Barnaba&backgroundColor=transparent',
+    description: 'Barnaba chowa swój notatnik i zaczyna szukać odpowiedniego Magicznego Dziennika w swoim ogromnym plecaku...',
+    backgroundUrl: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=2000&auto=format&fit=crop'
   }
 ];
