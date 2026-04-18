@@ -6,6 +6,7 @@ export const SCENES: Scene[] = [
     type: 'cinematic',
     title: 'Inicjalizacja',
     description: 'System załadowany. Nawiązywanie bezpiecznego połączenia z operatorem...',
+    backgroundUrl: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?q=80&w=2000&auto=format&fit=crop'
   },
   {
     id: 2,
@@ -13,6 +14,7 @@ export const SCENES: Scene[] = [
     title: 'Weryfikacja stażu operacyjnego',
     characterLine: 'Rozpoczynamy skanowanie profilu. Podaj swój status czasowy w strukturach (wiek), aby dostosować poziom dostępu.',
     description: 'Wybierz swój przedział wiekowy:',
+    backgroundUrl: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2000&auto=format&fit=crop',
     answers: [
       { id: 'age_1', text: '[A] Jestem rekrutem (poniżej 13 lat)', scoreCategory: 'age', scoreValue: 10 },
       { id: 'age_2', text: '[B] Kadet wdrożeniowy (13 - 26 lat)', scoreCategory: 'age', scoreValue: 20 },
