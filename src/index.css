@@ -1,1 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;1,400&display=swap');
 @import "tailwindcss";
+
+/* Global colours */
+:root {
+  --color-bg-deep: #0d1117;
+  --color-surface-warm: #2a2118;
+  --color-accent-gold: #d4af37;
+  --color-accent-gold-dark: #8b6a1f;
+  --color-text-primary: #f5eddc;
+  --color-text-dim: #c8baa0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-family: "Libre Baskerville", serif;
+}
+
+/* Default fallback style for background*/
+body {
+  background: var(--color-bg-deep);
+  color: var(--color-text-primary);
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+/* Neutralize Tailwind/local font overrides so one font wins everywhere */
+.font-serif,
+.font-sans,
+.font-mono,
+.font-title,
+.font-prose {
+  font-family: inherit;
+}
