@@ -12,4 +12,5 @@ export type Scene = {
   description: string;
   characterLine?: string;
   answers?: Answer[];
+  backgroundUrl?: string;
 };
