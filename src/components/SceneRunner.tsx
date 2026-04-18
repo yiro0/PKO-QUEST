@@ -2,7 +2,6 @@ import { useGameStore } from '../engine/gameStore';
 import { SCENES } from '../data/scenes';
 
 export default function SceneRunner() {
-  // 1. DODANE: Wyciągamy funkcję finishGame z silnika
   const { currentSceneId, advanceScene, addScore, finishGame } = useGameStore();
 
   const scene = SCENES.find((s) => s.id === currentSceneId);
@@ -17,13 +16,37 @@ export default function SceneRunner() {
     if (currentSceneId < SCENES.length) {
       advanceScene(currentSceneId + 1);
     } else {
-      // 2. ZMIENIONE: Zamiast po prostu przełączać ekran, odpalamy obliczanie!
       finishGame(); 
     }
   };
 
   return (
     <div className="flex flex-col h-full animate-in fade-in duration-500">
+      
+      {/* --- NOWY WSKAŹNIK POSTĘPU --- */}
+      <div className="flex gap-2 mb-8">
+        {SCENES.map((s, index) => {
+          // index + 1 to numer sceny w kolejności (1, 2, 3...)
+          const stepNumber = index + 1;
+          
+          let barClass = "bg-slate-700"; // Domyślnie szare (nieodkryte)
+          
+          if (stepNumber < currentSceneId) {
+            barClass = "bg-blue-800"; // Ukończone
+          } else if (stepNumber === currentSceneId) {
+            barClass = "bg-blue-400 animate-pulse shadow-[0_0_8px_rgba(96,165,250,0.8)]"; // Aktualne (pulsuje i świeci)
+          }
+
+          return (
+            <div 
+              key={s.id} 
+              className={`h-1.5 flex-1 rounded-sm transition-all duration-300 ${barClass}`}
+            />
+          );
+        })}
+      </div>
+      {/* ----------------------------- */}
+
       <h2 className="text-2xl text-blue-400 mb-2 font-mono font-bold uppercase tracking-widest">
         {scene.title}
       </h2>
