@@ -1,11 +1,19 @@
 import { useGameStore } from '../engine/gameStore';
+import welcomeBg from '../assets/welcome_screen_backgrounf.png';
 
 export default function WelcomeScreen() {
   const startGame = useGameStore((state) => state.startGame);
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4 relative">
-      <div className="absolute inset-0 bg-[#2c3e50] z-0" />
+      {/* Zamieniamy jednolity kolor na obrazek tła */}
+      <div 
+        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat" 
+        style={{ backgroundImage: `url(${welcomeBg})` }}
+      />
+      
+      {/* Opcjonalnie: lekki ciemny filtr (overlay), żeby przycisk był bardziej widoczny */}
+      <div className="absolute inset-0 bg-black/20 z-0 pointer-events-none" />
 
       <button
         onClick={startGame}
